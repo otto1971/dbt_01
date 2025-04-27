@@ -36,11 +36,10 @@ models:
   dbtlearn:
     +materialized: view
     +post-hook:
-      - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
+      - "GRANT SELECT ON {{ this}} TO ROLE REPORTER"
     dim:
       +materialized: table
-    src:
-      +materialized: ephemeral
+    src: 
+      +materialized: view
 
-vars:
-  user_name: "YOUR_USERNAME"
+

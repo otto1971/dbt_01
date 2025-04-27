@@ -1,22 +1,18 @@
-{{
-  config(
-    materialized = 'view'
+{{ config(
+    materialized='view'
     )
-}} 
-WITH src_hosts AS (
-    SELECT
-        *
-    FROM
-        {{ ref('src_hosts') }}
+}}
+
+with SRC_HOST as 
+(
+select
+    *
+from {{ref('src_hosts')}}
 )
-SELECT
-    host_id,
-    NVL(
-        host_name,
-        'Anonymous'
-    ) AS host_name,
-    is_superhost,
-    created_at,
-    updated_at
-FROM
-    src_hosts
+select
+    HOST_ID,
+    NVL(HOST_NAME,'Anonymous') as HOST_NAME,
+    IS_SUPERHOST,
+    CREATED_AT,
+    UPDATED_AT    
+from SRC_HOSTS
