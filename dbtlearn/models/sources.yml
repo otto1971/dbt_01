@@ -6,6 +6,12 @@ sources:
     tables:
       - name: listings
         identifier: raw_listings
+        columns:
+          - name: price
+            test:
+              - dbt_expectations.expect_column_values_to_match_regex:
+                  regex: "^\\\\$[0-9][0-9\\\\.]+$"
+
       - name: hosts
         identifier: raw_hosts
       - name: reviews
