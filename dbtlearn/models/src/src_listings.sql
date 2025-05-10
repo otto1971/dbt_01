@@ -4,6 +4,8 @@ WITH raw_listings AS (
     {{ source('airbnb','listings') }}
 )
 
+# ein kommentar
+
 SELECT
   id AS listing_id,
   name AS listing_name,
