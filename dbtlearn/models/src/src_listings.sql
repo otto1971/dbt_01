@@ -5,6 +5,7 @@ WITH raw_listings AS (
 )
 
 # ein kommentar
+# ein zweiter Kommentar
 
 SELECT
   id AS listing_id,
