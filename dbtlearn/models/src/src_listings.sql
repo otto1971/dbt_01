@@ -4,8 +4,8 @@ WITH raw_listings AS (
     {{ source('airbnb','listings') }}
 )
 
-# ein kommentar
-# ein zweiter Kommentar
+-- ein kommentar
+-- ein zweiter Kommentar
 
 SELECT
   id AS listing_id,
