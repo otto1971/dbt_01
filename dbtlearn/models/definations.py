@@ -5,8 +5,8 @@ from dagster_dbt import DbtCliResource, DbtProject, dbt_assets
 import dagster as dg
 
 # Points to the dbt project path
-#dbt_project_directory = Path(__file__).absolute().parent / "basic-dbt-project"
-dbt_project_directory = '/home/parallels/github/complete-dbt-bootcamp-zero-to-hero/dbtlearn/'
+dbt_project_directory = Path(__file__).absolute().parent / "basic-dbt-project"
+#dbt_project_directory = '/home/parallels/github/complete-dbt-bootcamp-zero-to-hero/dbtlearn/'
 dbt_project = DbtProject(project_dir=dbt_project_directory)
 
 # References the dbt project object
