@@ -25,6 +25,16 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+tests:
+  +store_failures: true
+  +schema: "DBT_TEST_TABLES"
+
+  my_project:
+    folder_1:
+      +table_for_failed_tests_for_this_folder: really_sensitive_test_failures_table
+    folder_2:
+      +table_for_failed_tests_for_this_folder: not_so_sensitive_test_failures_table
+
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
