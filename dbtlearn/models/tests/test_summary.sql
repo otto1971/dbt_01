@@ -46,7 +46,7 @@ select
     current_timestamp as time_stamp,
     'DIM_LISTINGS' as module_name,
     'UNIQUE_DIM_LISTINGS_WITH_HOSTS_LISTING_ID' as test_name,
-    'NOT_NULL' as test_type,
+    'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as fail_type,
     count(*) as faild_count
 from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_DIM_LISTINGS_WITH_HOSTS_LISTING_ID
@@ -55,9 +55,9 @@ select
     current_timestamp as time_stamp,
     'FCT_REVIEWS' as module_name,
     'UNIQUE_FCT_REVIEWS_LISTING_ID' as test_name,
-    'NOT_NULL' as test_type,
+    'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as fail_type,
     count(*) as faild_count
 from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_FCT_REVIEWS_LISTING_ID
 )
-select * from test_summary;
+select * from test_summary
