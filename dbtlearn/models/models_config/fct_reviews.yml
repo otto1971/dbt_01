@@ -1,13 +1,16 @@
 version: 2
 
 models:
-  - name: dim_listings_with_hosts
+  - name: fct_reviews
     description: "some text"
     columns:
       - name: listing_id
         tests:
           - not_null
           - unique
+          - relationships:
+              field: listing_id
+              to: ref('dim_listings_cleansed')
           ##- accepted_values:
            #   values: [1,2,3] 
       #    - compare_two_objects
