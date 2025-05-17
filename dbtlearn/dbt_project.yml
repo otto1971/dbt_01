@@ -26,7 +26,7 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 tests:
-  +store_failures: true
+  +store_failures: true  
   +schema: "DBT_TEST_TABLES"
 
   my_project:

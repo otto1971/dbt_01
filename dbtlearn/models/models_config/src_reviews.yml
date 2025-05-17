@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: src_listings
+    description: "dbtd"
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
+      - name: reviewer_name
+          - not_null
