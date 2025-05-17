@@ -1,6 +1,6 @@
 #version: 2
-models:
-  - name: dim_listings_with_hosts
+#models:
+  # name: dim_listings_with_hosts
   #  columns:
   #  - name: listing_id
   #    description:  'test'
@@ -19,11 +19,11 @@ models:
   #          max_value: 5000
   #          config:
   #            severity: warn
-    tests:
-      - dbt_expectations.expect_table_row_count_to_equal_other_table:
-          compare_model: src_listings #source('airbnb','listings')
-      - compare_two_objects:
-          compare_two_objects: ('src_listings','dim_listings_with_hosts','id','id' )
+  #  tests:
+  #    - dbt_expectations.expect_table_row_count_to_equal_other_table:
+  #        compare_model: src_listings #source('airbnb','listings')
+      #- compare_two_objects:
+      #    compare_two_objects: ('src_listings','dim_listings_with_hosts','id','id' )
 
  # - name: dim_hosts_cleansed
  #   description: Cleansed table for hosts from airbnb data

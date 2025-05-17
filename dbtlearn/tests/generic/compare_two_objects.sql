@@ -1,6 +1,7 @@
 {% test compare_two_objects(target_model, source_model, target_column, source_column) %}
 
-with target_table as (
+with
+target_table as (
     select cast({{target_column}} as char(40)) as target_column
     from {{target_model}} 
 ),

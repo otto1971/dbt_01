@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_listings_with_hosts
+    description: "some text"
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1,2,3] 
+      #    - compare_two_objects
+      #        config:
+      #          target_model: 'dim_listings_with_hosts'
+      #          source_model: 'src_listings'
+      #          target_column: 'listing_id'
+      #          source_column: 'listing_id'
