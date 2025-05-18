@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: src_listings
+  - name: src_reviews
     description: "dbtd"
     columns:
       - name: listing_id
