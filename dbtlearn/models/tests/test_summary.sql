@@ -168,7 +168,7 @@ select
     count(*) as faild_count
 from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_SRC_LISTINGS_LISTING_ID
 )
-select (select max(test_nr)+1 from AIRBNB.DEV.TEST_SUMMARY) as test_nr,
+select  (select max(test_nr)+1 from AIRBNB.DEV.TEST_SUMMARY) as test_nr,
         time_stamp,
         dbt_model,
         test_type,
