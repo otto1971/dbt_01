@@ -1,6 +1,5 @@
 {{ config(
-    materialized='incremental',
-    on_schema_change='fail'
+    materialized='incremental'
     )
 }}
 
@@ -170,7 +169,7 @@ from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_SRC_LISTINGS_LISTING_ID
 ),
 finalresult as
 (
-select  (select max(test_nr)+1 from AIRBNB.DEV.TEST_SUMMARY) as test_nr,
+select  (select max(test_nr)+1 from AIRBNB.DEV.LOAD_TEST_DATA) as test_nr,
         time_stamp,
         dbt_model,
         test_type,
