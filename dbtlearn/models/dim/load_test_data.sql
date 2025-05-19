@@ -4,7 +4,7 @@
     )
 }}
 
-with test_summary as
+with test_data_summary as
 (
 select 
     current_timestamp as time_stamp,
@@ -167,11 +167,16 @@ select
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
     count(*) as error_count
 from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_SRC_LISTINGS_LISTING_ID
-)
+),
+finalresult as
+(
 select  (select max(test_nr)+1 from AIRBNB.DEV.TEST_SUMMARY) as test_nr,
         time_stamp,
         dbt_model,
         test_type,
         error_type,
         error_count
-from test_summary
+from test_data_summary
+)
+
+select * from finalresult

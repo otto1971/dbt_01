@@ -6,16 +6,16 @@ models:
     columns:
       - name: listing_id
         tests:
+       #   - relationships_cast:
+       #       field: listing_id
+       #       to: dim_listings_cleansed
           - not_null
           - unique
           - relationships:
-              field: listing_id
+              field: cast(listing_id as char(40))
               to: ref('dim_listings_cleansed')
           ##- accepted_values:
            #   values: [1,2,3] 
-      #    - compare_two_objects
-      #        config:
-      #          target_model: 'dim_listings_with_hosts'
-      #          source_model: 'src_listings'
-      #          target_column: 'listing_id'
-      #          source_column: 'listing_id'
+
+
+
