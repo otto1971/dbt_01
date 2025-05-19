@@ -172,6 +172,7 @@ finalresult as
 select  (select max(test_nr)+1 from AIRBNB.DEV.LOAD_TEST_DATA) as test_nr,
         time_stamp,
         dbt_model,
+        test_name,
         test_type,
         error_type,
         error_count

@@ -5,17 +5,12 @@ models:
     description: "some text"
     columns:
       - name: listing_id
-        tests:
-       #   - relationships_cast:
-       #       field: listing_id
-       #       to: dim_listings_cleansed
+        tests:   
           - not_null
           - unique
           - relationships:
               field: cast(listing_id as char(40))
               to: ref('dim_listings_cleansed')
-          ##- accepted_values:
-           #   values: [1,2,3] 
 
 
 

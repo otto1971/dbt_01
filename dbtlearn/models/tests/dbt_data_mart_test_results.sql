@@ -1,16 +1,17 @@
 {{ config(
     materialized='incremental',
-    on_schema_change='fail'
+    alias="dbt_data_mart_test_results"
     )
 }}
 
-with test_summary as
+with test_data_summary as
 (
 select 
     current_timestamp as time_stamp,
     'DIM_LISTINGS_WITH_HOSTS_LISTING' as dbt_model,
+    'LISTING_ID' as test_column,
     'ACCEPTED_VALUES_DIM_LISTINGS_WITH_HOSTS_LISTING_ID__1__2__3' as test_name,
-    'ACCEPTED_VALUES' as test_type,
+    'ACCEPTED_VALUES' as test_type,    
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
     count(*) as error_count
 from AIRBNB.DEV_DBT_TEST_TABLES.ACCEPTED_VALUES_DIM_LISTINGS_WITH_HOSTS_LISTING_ID__1__2__3
@@ -18,6 +19,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_LISTINGS_WITH_HOSTS_LISTING' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_DIM_LISTINGS_WITH_HOSTS_LISTING_ID' as test_name,
     'NOT_NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -27,6 +29,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'FCT_REVIEWS' as dbt_model,
+    'LISTING_ID' as test_column,
     'RELATIONSHIPS_FCT_REVIEWS' as test_name,
     'RELATIONSHIPS' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -36,6 +39,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'FCT_REVIEWS' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_FCT_REVIEWS_LISTING_ID' as test_name,
     'NOT_NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -45,6 +49,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_LISTINGS' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_DIM_LISTINGS_WITH_HOSTS_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -54,6 +59,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'FCT_REVIEWS' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_FCT_REVIEWS_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -63,6 +69,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_HOSTS_CLEANSED' as dbt_model,
+    'HOST_ID' as test_column,
     'NOT_NULL_DIM_HOSTS_CLEANSED_HOST_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -72,6 +79,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_LISTINGS_CLEANSED' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_DIM_LISTINGS_CLEANSED_LISTING_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -81,6 +89,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_REVIEWS_CLEANSED' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_DIM_REVIEWS_CLEANSED_LISTING_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -90,6 +99,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_HOSTS' as dbt_model,
+    'HOST_ID' as test_column,
     'NOT_NULL_SRC_HOSTS_HOST_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -99,6 +109,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_LISTINGS' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_SRC_REVIEWS_LISTING_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -108,6 +119,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_REVIEWS' as dbt_model,
+    'LISTING_ID' as test_column,
     'NOT_NULL_SRC_REVIEWS_LISTING_ID' as test_name,
     'NOT NULL' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as fail_type,
@@ -117,6 +129,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_HOSTS_CLEANSED' as dbt_model,
+    'HOST_ID' as test_column,
     'UNIQUE_DIM_HOSTS_CLEANSED_HOST_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -126,6 +139,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_LISTINGS_CLEANSED' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_DIM_LISTINGS_CLEANSED_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -135,6 +149,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'DIM_REVIEWS_CLEANSED' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_DIM_REVIEWS_CLEANSED_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -144,6 +159,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_HOSTS' as dbt_model,
+    'HOST_ID' as test_column,
     'UNIQUE_SRC_HOSTS_HOST_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -153,6 +169,7 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_REVIEWS' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_SRC_REVIEWS_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
@@ -162,16 +179,23 @@ union all
 select 
     current_timestamp as time_stamp,
     'SRC_LISTINGS' as dbt_model,
+    'LISTING_ID' as test_column,
     'UNIQUE_SRC_LISTINGS_LISTING_ID' as test_name,
     'UNIQUE' as test_type,
     case when count(*)>0 then 'failed' else 'not failed' end as error_type,
     count(*) as error_count
 from AIRBNB.DEV_DBT_TEST_TABLES.UNIQUE_SRC_LISTINGS_LISTING_ID
-)
-select  (select max(test_nr)+1 from AIRBNB.DEV.TEST_SUMMARY) as test_nr,
+),
+finalresult as
+(
+select  (select max(test_nr)+1 from AIRBNB.DEV.dbt_data_mart_test_results) as test_nr,
         time_stamp,
         dbt_model,
+        test_name,
         test_type,
         error_type,
         error_count
-from test_summary
+from test_data_summary
+)
+
+select * from finalresult
