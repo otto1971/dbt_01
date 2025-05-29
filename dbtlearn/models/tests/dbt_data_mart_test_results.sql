@@ -191,11 +191,11 @@ finalresult as
 select  (select max(test_nr)+1 from AIRBNB.DEV.dbt_data_mart_test_results) as test_nr,
         time_stamp,
         dbt_model,
+        test_column,
         test_name,
         test_type,
         error_type,
         error_count
 from test_data_summary
 )
-
 select * from finalresult
