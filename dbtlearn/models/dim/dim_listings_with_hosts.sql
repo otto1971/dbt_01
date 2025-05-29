@@ -1,5 +1,6 @@
 {{ config(
-    materialized='table'
+    materialized='view',
+    tags=["DIM", "LISTINGS WITH HOSTS"]  
     )
 }}
 

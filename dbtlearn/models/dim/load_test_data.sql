@@ -1,5 +1,6 @@
 {{ config(
     materialized='incremental'
+    tags=["DIM", "TEST"]  
     )
 }}
 
